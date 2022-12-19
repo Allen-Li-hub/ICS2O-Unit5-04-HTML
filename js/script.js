@@ -1,7 +1,7 @@
 // Copyright (c) 2022 Allen Li All rights reserved
 //
 // Created by: Allen Li
-// Created on: Oct 2022
+// Created on: Nov 27
 // This file contains the JS functions for index.html
 
 "use strict"
@@ -10,23 +10,24 @@
  * Check servie worker.
  */
 if (navigator.serviceWorker) {
-  navigator.serviceWorker.register("/ICS2O-Unit5-01-HTML/sw.js", {
-    scope: "/ICS2O-Unit5-01-HTML/",
+  navigator.serviceWorker.register("/ICS2O-Unit5-04-HTML/sw.js", {
+    scope: "/ICS2O-Unit5-04-HTML/",
   })
 }
 
-const randomNumber = Math.floor(Math.random() * 6) + 1
+function calculate() {
+  let inputedAge = document.getElementById("age").value
+  let inputedDay = document.getElementById("day").value
 
-function updateSliderValue(valueFromSlider) {
-  document.getElementById("slider-value").innerHTML = valueFromSlider
-
-  if (valueFromSlider == randomNumber) {
+  if (
+    inputedDay == "Tuesday" ||
+    inputedDay == "Thursday" ||
+    (inputedAge > 12 && inputedAge < 21)
+  ) {
     document.getElementById("answer").innerHTML =
-      "the answer was, " + randomNumber + "!" + " You got it! Excellent."
-  }
-
-  if (valueFromSlider != randomNumber) {
+      "You're able to get the discount! :)"
+  } else {
     document.getElementById("answer").innerHTML =
-      "Sorry the answer was, " + randomNumber + "!" + " please try again."
+      "Sorry, you must pay for regular pricing. :("
   }
 }
